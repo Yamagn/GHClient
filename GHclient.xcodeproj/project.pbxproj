@@ -16,6 +16,8 @@
 		07DA7C1823C6DF20002C8320 /* RepoDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07DA7C1723C6DF20002C8320 /* RepoDetail.storyboard */; };
 		07DA7C1A23C6DF31002C8320 /* RepoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DA7C1923C6DF31002C8320 /* RepoDetailViewController.swift */; };
 		07DA7C1C23C6DF9E002C8320 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DA7C1B23C6DF9E002C8320 /* API.swift */; };
+		07DA7C1F23C6E51E002C8320 /* Tab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07DA7C1E23C6E51E002C8320 /* Tab.storyboard */; };
+		07DA7C2323C6E94F002C8320 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DA7C2223C6E94F002C8320 /* SceneDelegate.swift */; };
 		52950B03830AAF51E59E63BD /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04903FCF88110E6A3A06779B /* SVProgressHUD.framework */; };
 		5DEDF64163379F1CF5934BDD /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04903FCF88110E6A3A06779B /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B09783811311B9AEA319E40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D77882D42F3ABFEFEE9CA8A4 /* Assets.xcassets */; };
@@ -23,7 +25,6 @@
 		81A7262E7E4F0E904602437A /* GHclientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983FCDC6DC3DB3889575A35A /* GHclientTests.swift */; };
 		A1459F568D5B32D5AA356AAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90849FA4F35B2492F97D6D0F /* AppDelegate.swift */; };
 		A20503AE125EFB446B60ED1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B84C794232EBBA313362D07 /* LaunchScreen.storyboard */; };
-		AEBEAEA87D1419BD9375F339 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FBAA462F3D121DBC4E87C1 /* SceneDelegate.swift */; };
 		F82402062934F401F26A7CEA /* APIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 398F9D915A72B93659B8CD6D /* APIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -63,13 +64,14 @@
 		07DA7C1723C6DF20002C8320 /* RepoDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = RepoDetail.storyboard; path = GHclient/Scenes/RepoDetail/RepoDetail.storyboard; sourceTree = SOURCE_ROOT; };
 		07DA7C1923C6DF31002C8320 /* RepoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepoDetailViewController.swift; path = GHclient/Scenes/RepoDetail/RepoDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		07DA7C1B23C6DF9E002C8320 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = API.swift; path = GHclient/Network/API.swift; sourceTree = SOURCE_ROOT; };
+		07DA7C1E23C6E51E002C8320 /* Tab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Tab.storyboard; path = GHclient/Scenes/Tab/Tab.storyboard; sourceTree = SOURCE_ROOT; };
+		07DA7C2223C6E94F002C8320 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = GHclient/SceneDelegate.swift; sourceTree = SOURCE_ROOT; };
 		398F9D915A72B93659B8CD6D /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = APIKit.framework; sourceTree = "<group>"; };
 		42FFF2EE0AE107FAD56D9AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52C2D24FB40CD7F6E38A62FC /* GHClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GHClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6607806B1F95097A78C51C3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90849FA4F35B2492F97D6D0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		983FCDC6DC3DB3889575A35A /* GHclientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHclientTests.swift; sourceTree = "<group>"; };
-		A6FBAA462F3D121DBC4E87C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B2EA02D109379238E038090C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C560C5A0A02425DCA487DA07 /* GHClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D77882D42F3ABFEFEE9CA8A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		0702BF1C23C5DA6400DF69F7 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				07DA7C1D23C6E512002C8320 /* Tab */,
 				07DA7C0A23C6DD8E002C8320 /* RepoDetail */,
 				07DA7C0823C6DCFA002C8320 /* Search */,
 				0702BF2123C5DBE800DF69F7 /* Auth */,
@@ -168,6 +171,14 @@
 			path = RepoDetail;
 			sourceTree = "<group>";
 		};
+		07DA7C1D23C6E512002C8320 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				07DA7C1E23C6E51E002C8320 /* Tab.storyboard */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 		1851DB09A8CAB6F65B3C3BE1 = {
 			isa = PBXGroup;
 			children = (
@@ -216,12 +227,12 @@
 		ABC99B8B94C7D6E464BDFA30 /* GHClient */ = {
 			isa = PBXGroup;
 			children = (
+				07DA7C2223C6E94F002C8320 /* SceneDelegate.swift */,
 				0702BF1E23C5DA9E00DF69F7 /* App */,
 				0702BF1D23C5DA7100DF69F7 /* Assets */,
 				0702BF1C23C5DA6400DF69F7 /* Scenes */,
 				0702BF1B23C5DA5B00DF69F7 /* Network */,
 				B2EA02D109379238E038090C /* Info.plist */,
-				A6FBAA462F3D121DBC4E87C1 /* SceneDelegate.swift */,
 			);
 			path = GHClient;
 			sourceTree = "<group>";
@@ -319,6 +330,7 @@
 			files = (
 				07DA7C1023C6DEE8002C8320 /* Auth.storyboard in Resources */,
 				7B09783811311B9AEA319E40 /* Assets.xcassets in Resources */,
+				07DA7C1F23C6E51E002C8320 /* Tab.storyboard in Resources */,
 				A20503AE125EFB446B60ED1B /* LaunchScreen.storyboard in Resources */,
 				07DA7C1823C6DF20002C8320 /* RepoDetail.storyboard in Resources */,
 				07DA7C0C23C6DEBB002C8320 /* User.storyboard in Resources */,
@@ -355,10 +367,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				07DA7C1623C6DF12002C8320 /* SearchViewController.swift in Sources */,
+				07DA7C2323C6E94F002C8320 /* SceneDelegate.swift in Sources */,
 				07DA7C1223C6DEF7002C8320 /* AuthViewController.swift in Sources */,
 				A1459F568D5B32D5AA356AAB /* AppDelegate.swift in Sources */,
 				07DA7C0E23C6DECA002C8320 /* UserViewController.swift in Sources */,
-				AEBEAEA87D1419BD9375F339 /* SceneDelegate.swift in Sources */,
 				07DA7C1A23C6DF31002C8320 /* RepoDetailViewController.swift in Sources */,
 				07DA7C1C23C6DF9E002C8320 /* API.swift in Sources */,
 			);
