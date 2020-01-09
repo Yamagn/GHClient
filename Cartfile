@@ -1,0 +1,4 @@
+github "SVProgressHUD/SVProgressHUD"
+github "ishkawa/APIKit" ~> 5.0
+github "ReactiveX/RxSwift" ~> 5.0
+github "RxSwiftCommunity/Action" ~> 3.6.0
