@@ -34,6 +34,9 @@ targets:
     dependencies:
       - carthage: SVProgressHUD
       - carthage: APIKit
+      - carthage: RxSwift
+      - carthage: Action
+      - carthage: Kingfisher
   GHClientTests:
     type: bundle.unit-test
     platform: iOS
