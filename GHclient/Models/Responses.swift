@@ -42,4 +42,18 @@ public struct GetRepositoryResponse: Codable {
     let fullName: String
     let description: String
     let defaultBranch: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case fullName = "full_name"
+        case description
+        case defaultBranch = "default_branch"
+    }
+}
+
+public struct GetContentsResponse: Codable {
+    let name: String
+    let url: String
+    let type: String
 }

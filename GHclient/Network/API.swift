@@ -85,3 +85,27 @@ public struct GetUserRepositories: GitHubRequest {
         return try JSONDecoder().decode([GetRepositoryResponse].self, from: data)
     }
 }
+
+public struct GetContents: GitHubRequest {
+    public var dataParser: DataParser {
+        return DecodableDataParser()
+    }
+    
+    public typealias Response = [GetContentsResponse]
+    public var method: HTTPMethod {
+        return .get
+    }
+    public var path: String {
+        return "/repos/\(username)/\(reponame)/contents"
+    }
+    
+    let username: String
+    let reponame: String
+    
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [GetContentsResponse] {
+        guard let data = object as? Data else {
+            throw ResponseError.unexpectedObject(object)
+        }
+        return try JSONDecoder().decode([GetContentsResponse].self, from: data)
+    }
+}
