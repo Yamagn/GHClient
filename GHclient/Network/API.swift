@@ -33,23 +33,55 @@ public struct GetUsers: GitHubRequest {
     }
     
     public typealias Response = GetUsersResponse
-    public let method: HTTPMethod = .get
+    public var method: HTTPMethod {
+        return .get
+    }
     public var path: String {
         return "/search/users"
     }
     
     public var parameters: Any? {
-        return ["q": q, "sort": sort, "order": order]
+        return ["q": q, "sort": sort, "order": order, "page": page]
     }
     
     let q: String
     let sort: String
     let order: String
+    let page: Int
     
     public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> GetUsersResponse {
         guard let data = object as? Data else {
             throw ResponseError.unexpectedObject(object)
         }
         return try JSONDecoder().decode(GetUsersResponse.self, from: data)
+    }
+}
+
+public struct GetUserRepositories: GitHubRequest {
+    public var dataParser: DataParser {
+        return DecodableDataParser()
+    }
+    
+    public typealias Response = [GetRepositoryResponse]
+    public var method: HTTPMethod {
+        return .get
+    }
+    public var path: String {
+        return "/users/\(username)/repos"
+    }
+    
+    public var parameters: Any? {
+        return ["type":"owner", "sort": sort, "direction": direction]
+    }
+    
+    let username: String
+    let sort: String
+    let direction: String
+    
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [GetRepositoryResponse] {
+        guard let data = object as? Data else {
+            throw ResponseError.unexpectedObject(object)
+        }
+        return try JSONDecoder().decode([GetRepositoryResponse].self, from: data)
     }
 }
