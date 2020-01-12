@@ -27,12 +27,12 @@ extension GitHubRequest {
     }
 }
 
-public struct GetUsers: GitHubRequest {
+public struct SearchUsers: GitHubRequest {
     public var dataParser: DataParser {
         return DecodableDataParser()
     }
     
-    public typealias Response = GetUsersResponse
+    public typealias Response = Users
     public var method: HTTPMethod {
         return .get
     }
@@ -41,19 +41,17 @@ public struct GetUsers: GitHubRequest {
     }
     
     public var parameters: Any? {
-        return ["q": q, "sort": sort, "order": order, "page": page]
+        return ["q": q, "page": page]
     }
     
     let q: String
-    let sort: String
-    let order: String
     let page: Int
     
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> GetUsersResponse {
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
         guard let data = object as? Data else {
             throw ResponseError.unexpectedObject(object)
         }
-        return try JSONDecoder().decode(GetUsersResponse.self, from: data)
+        return try JSONDecoder().decode(Users.self, from: data)
     }
 }
 
@@ -62,7 +60,7 @@ public struct GetUserRepositories: GitHubRequest {
         return DecodableDataParser()
     }
     
-    public typealias Response = [GetRepositoryResponse]
+    public typealias Response = [Repository]
     public var method: HTTPMethod {
         return .get
     }
@@ -71,18 +69,16 @@ public struct GetUserRepositories: GitHubRequest {
     }
     
     public var parameters: Any? {
-        return ["type":"owner", "sort": sort, "direction": direction]
+        return ["type":"owner"]
     }
     
     let username: String
-    let sort: String
-    let direction: String
     
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [GetRepositoryResponse] {
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
         guard let data = object as? Data else {
             throw ResponseError.unexpectedObject(object)
         }
-        return try JSONDecoder().decode([GetRepositoryResponse].self, from: data)
+        return try JSONDecoder().decode([Repository].self, from: data)
     }
 }
 
@@ -91,7 +87,7 @@ public struct GetContents: GitHubRequest {
         return DecodableDataParser()
     }
     
-    public typealias Response = [GetContentsResponse]
+    public typealias Response = [Contents]
     public var method: HTTPMethod {
         return .get
     }
@@ -102,10 +98,31 @@ public struct GetContents: GitHubRequest {
     let username: String
     let reponame: String
     
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [GetContentsResponse] {
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
         guard let data = object as? Data else {
             throw ResponseError.unexpectedObject(object)
         }
-        return try JSONDecoder().decode([GetContentsResponse].self, from: data)
+        return try JSONDecoder().decode([Contents].self, from: data)
+    }
+}
+
+public struct GetUser: GitHubRequest {
+    public var dataParser: DataParser {
+        return DecodableDataParser()
+    }
+    
+    public typealias Response = UserItem
+    public var method: HTTPMethod {
+        return .get
+    }
+    public var path: String {
+        return "/user"
+    }
+    
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+        guard let data = object as? Data else {
+            throw ResponseError.unexpectedObject(object)
+        }
+        return try JSONDecoder().decode(UserItem.self, from: data)
     }
 }
