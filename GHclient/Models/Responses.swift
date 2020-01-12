@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct GetUsersResponse: Codable {
+public struct Users: Codable {
     let totalCount: Int
     let incompleteResults: Bool
     let items: [UserItem]
@@ -25,6 +25,7 @@ public struct UserItem: Codable {
     let id: Int
     let avatarUrl: String
     let reposUrl: String
+    let name: String
     let type: String
     
     enum CodingKeys: String, CodingKey {
@@ -32,11 +33,12 @@ public struct UserItem: Codable {
         case id
         case avatarUrl = "avatar_url"
         case reposUrl = "repos_url"
+        case name
         case type
     }
 }
 
-public struct GetRepositoryResponse: Codable {
+public struct Repository: Codable {
     let id: Int
     let name: String
     let fullName: String
@@ -52,7 +54,7 @@ public struct GetRepositoryResponse: Codable {
     }
 }
 
-public struct GetContentsResponse: Codable {
+public struct Contents: Codable {
     let name: String
     let url: String
     let type: String
