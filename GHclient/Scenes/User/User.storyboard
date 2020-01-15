@@ -10,7 +10,7 @@
         <!--User-->
         <scene sceneID="6Kp-kv-aIo">
             <objects>
-                <viewController storyboardIdentifier="User" title="User" id="zvC-Y0-bLN" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="User" title="User" id="zvC-Y0-bLN" customClass="UserViewController" customModule="GHclient" customModuleProvider="target" sceneMemberID="viewController">
                     <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="tu9-B9-QdF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -22,13 +22,13 @@
                                     <constraint firstAttribute="height" constant="100" id="c0m-eC-L7E"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgA-WQ-G9D">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgA-WQ-G9D">
                                 <rect key="frame" x="174" y="59" width="220" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6S-jB-bDi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6S-jB-bDi">
                                 <rect key="frame" x="174" y="94" width="220" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -39,6 +39,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IFF-Qf-fy6" firstAttribute="leading" secondItem="dyM-Qf-buu" secondAttribute="leading" id="0RM-kt-oa2"/>
                             <constraint firstItem="IFF-Qf-fy6" firstAttribute="top" secondItem="BCt-qP-MI6" secondAttribute="bottom" constant="22" id="12f-gJ-DAc"/>
@@ -60,6 +61,12 @@
                     <tabBarItem key="tabBarItem" title="" image="person.fill" catalog="system" id="QCM-oo-brQ"/>
                     <navigationItem key="navigationItem" id="wiL-W2-mch"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="avaterImage" destination="BCt-qP-MI6" id="OL4-lV-dyx"/>
+                        <outlet property="fullName" destination="qgA-WQ-G9D" id="ERB-b1-Qce"/>
+                        <outlet property="tableView" destination="IFF-Qf-fy6" id="4I6-Ho-b9G"/>
+                        <outlet property="userName" destination="T6S-jB-bDi" id="LVN-Wj-NRx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbf-DP-EKt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
