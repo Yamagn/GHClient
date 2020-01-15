@@ -10,7 +10,7 @@
         <!--User-->
         <scene sceneID="6Kp-kv-aIo">
             <objects>
-                <viewController storyboardIdentifier="User" title="User" id="zvC-Y0-bLN" customClass="UserViewController" customModule="GHClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="User" title="User" id="zvC-Y0-bLN" sceneMemberID="viewController">
                     <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="tu9-B9-QdF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

@@ -42,7 +42,7 @@ public struct Repository: Codable {
     let id: Int
     let name: String
     let fullName: String
-    let description: String
+    let description: String?
     let defaultBranch: String
     
     enum CodingKeys: String, CodingKey {

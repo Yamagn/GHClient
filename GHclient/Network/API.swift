@@ -11,8 +11,9 @@ import APIKit
 
 final class DecodableDataParser: DataParser {
     var contentType: String? {
-        return "applicaiton/json"
+        return "application/json"
     }
+    
     
     func parse(data: Data) throws -> Any {
         return data
@@ -65,14 +66,15 @@ public struct GetUserRepositories: GitHubRequest {
         return .get
     }
     public var path: String {
-        return "/users/\(username)/repos"
+        return "users/\(username)/repos"
     }
     
     public var parameters: Any? {
-        return ["type":"owner"]
+        return ["page": page]
     }
     
     let username: String
+    let page: Int
     
     public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
         guard let data = object as? Data else {
@@ -120,6 +122,29 @@ public struct GetUser: GitHubRequest {
     }
     
     public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+        guard let data = object as? Data else {
+            throw ResponseError.unexpectedObject(object)
+        }
+        return try JSONDecoder().decode(UserItem.self, from: data)
+    }
+}
+
+public struct GetUserDetail: GitHubRequest {
+    public var dataParser: DataParser {
+        return DecodableDataParser()
+    }
+    
+    public typealias Response = UserItem
+    public var method: HTTPMethod {
+        return .get
+    }
+    public var path: String {
+        return "users/\(username)"
+    }
+    
+    let username: String
+    
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> UserItem {
         guard let data = object as? Data else {
             throw ResponseError.unexpectedObject(object)
         }
