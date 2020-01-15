@@ -9,7 +9,10 @@
 import UIKit
 
 class RepoCell: UITableViewCell {
-
+    @IBOutlet weak var repoTypeImage: UIImageView!
+    @IBOutlet weak var repoName: UILabel!
+    @IBOutlet weak var repoDesc: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
