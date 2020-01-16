@@ -44,6 +44,7 @@ public struct Repository: Codable {
     let fullName: String
     let description: String?
     let defaultBranch: String
+    let isPrivate: Bool
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -51,6 +52,7 @@ public struct Repository: Codable {
         case fullName = "full_name"
         case description
         case defaultBranch = "default_branch"
+        case isPrivate = "private"
     }
 }
 
