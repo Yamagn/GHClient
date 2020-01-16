@@ -70,7 +70,7 @@ public struct GetUserRepositories: GitHubRequest {
     }
     
     public var parameters: Any? {
-        return ["page": page]
+        return ["page": page, "sort": "updated"]
     }
     
     let username: String

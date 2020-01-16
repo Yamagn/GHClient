@@ -25,7 +25,7 @@ public struct UserItem: Codable {
     let id: Int
     let avatarUrl: String
     let reposUrl: String
-    let name: String
+    let name: String?
     let type: String
     
     enum CodingKeys: String, CodingKey {
