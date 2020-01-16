@@ -11,9 +11,11 @@ import RxRelay
 import Action
 import APIKit
 
-protocol RepoDetailViewModelInput {}
+protocol RepoDetailViewModelInputs {
+    var fetchTrigger: PublishSubject<Void> { get }
+}
 
-protocol RepoDetailViewModelOutput {
+protocol RepoDetailViewModelOutputs {
     var repository: Repository { get }
     var contents: Observable<[Content]> { get }
     var navigationBarTitle: Observable<String> { get }
@@ -22,15 +24,17 @@ protocol RepoDetailViewModelOutput {
 }
 
 protocol RepoDetailViewModelType {
-    var input: RepoDetailViewModelInput { get }
-    var output: RepoDetailViewModelOutput { get }
+    var inputs: RepoDetailViewModelInputs { get }
+    var outputs: RepoDetailViewModelOutputs { get }
 }
 
-final class RepoDetailViewModel: RepoDetailViewModelType, RepoDetailViewModelInput, RepoDetailViewModelOutput {
-    var input: RepoDetailViewModelInput { return self}
-    var output: RepoDetailViewModelOutput { return self }
+final class RepoDetailViewModel: RepoDetailViewModelType, RepoDetailViewModelInputs, RepoDetailViewModelOutputs {
+    var inputs: RepoDetailViewModelInputs { return self}
+    var outputs: RepoDetailViewModelOutputs { return self }
     
     // MARK: - Input
+    
+    let fetchTrigger: PublishSubject<Void> = PublishSubject<Void>()
     
     // MARK: - Output
     let repository: Repository
@@ -60,6 +64,10 @@ final class RepoDetailViewModel: RepoDetailViewModelType, RepoDetailViewModelInp
         getContentsAction.elements
             .withLatestFrom(contents)
             .bind(to: contents)
+            .disposed(by: disposeBag)
+        
+        fetchTrigger
+            .bind(to: getContentsAction.inputs)
             .disposed(by: disposeBag)
     }
 }

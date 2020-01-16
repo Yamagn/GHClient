@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bvU-52-S69">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rkc-yW-2Z5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
@@ -7,20 +7,63 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Repo Detail View Controller-->
+        <!--RepoDetail-->
         <scene sceneID="hMo-Ip-Nhd">
             <objects>
-                <viewController id="bvU-52-S69" customClass="RepoDetailViewController" customModule="GHClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RepoDetail" title="RepoDetail" id="bvU-52-S69" customClass="RepoDetailViewController" customModule="GHclient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iqn-gV-SlS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgb-EW-9sl">
+                                <rect key="frame" x="20" y="100" width="374" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="grs-sE-IsR">
+                                <rect key="frame" x="0.0" y="130" width="414" height="746"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="grs-sE-IsR" firstAttribute="top" secondItem="zgb-EW-9sl" secondAttribute="bottom" constant="8.5" id="Gq6-WF-aWX"/>
+                            <constraint firstItem="AY0-3b-q41" firstAttribute="trailing" secondItem="zgb-EW-9sl" secondAttribute="trailing" constant="20" id="PDf-Ej-nQh"/>
+                            <constraint firstAttribute="bottom" secondItem="grs-sE-IsR" secondAttribute="bottom" constant="20" symbolic="YES" id="QNM-r0-dcR"/>
+                            <constraint firstItem="zgb-EW-9sl" firstAttribute="leading" secondItem="AY0-3b-q41" secondAttribute="leading" constant="20" id="UTc-k2-bCx"/>
+                            <constraint firstItem="grs-sE-IsR" firstAttribute="leading" secondItem="AY0-3b-q41" secondAttribute="leading" id="lkU-13-CC3"/>
+                            <constraint firstItem="grs-sE-IsR" firstAttribute="trailing" secondItem="AY0-3b-q41" secondAttribute="trailing" id="tNi-zu-zuY"/>
+                            <constraint firstItem="zgb-EW-9sl" firstAttribute="top" secondItem="AY0-3b-q41" secondAttribute="top" constant="12" id="ul8-U7-K4J"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="AY0-3b-q41"/>
                     </view>
+                    <navigationItem key="navigationItem" id="R4A-d6-OId"/>
+                    <connections>
+                        <outlet property="repoDesc" destination="zgb-EW-9sl" id="eYJ-x5-RvU"/>
+                        <outlet property="tableView" destination="grs-sE-IsR" id="hTQ-54-Ate"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3v-hW-soa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-13" y="127"/>
+            <point key="canvasLocation" x="897.10144927536237" y="126.5625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mGy-x9-8e5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rkc-yW-2Z5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZU3-yR-jUK">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bvU-52-S69" kind="relationship" relationship="rootViewController" id="FXl-je-zgm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XfK-nk-wbi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-13.043478260869566" y="126.5625"/>
         </scene>
     </scenes>
 </document>

@@ -7,24 +7,56 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class RepoDetailViewController: UIViewController {
-
+    static func make(with viewModel: RepoDetailViewModel) -> RepoDetailViewController {
+        let repoDetailSB = UIStoryboard(name: "RepoDetail", bundle: nil)
+        let repoDetailVC = repoDetailSB.instantiateViewController(withIdentifier: "RepoDetail") as! RepoDetailViewController
+        repoDetailVC.viewModel = viewModel
+        return repoDetailVC
+    }
+    @IBOutlet weak var repoDesc: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    private var viewModel: RepoDetailViewModelType!
+    private var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        viewModel.outputs.navigationBarTitle
+            .observeOn(MainScheduler.instance)
+            .bind(to: navigationItem.rx.title)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.contents
+            .observeOn(MainScheduler.instance)
+            .bind(to: tableView.rx.items) { tableView, row, content in
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ContentCell") as! ContentCell
+                if content.type == "dir" {
+                    let path = Bundle.main.path(forResource: "directory", ofType: "png")
+                    cell.contentType.image = UIImage(contentsOfFile: path!)
+                } else {
+                    let path = Bundle.main.path(forResource: "file", ofType: "png")
+                    cell.contentType.image = UIImage(contentsOfFile: path!)
+                }
+                cell.contentName.text = content.name
+                return cell
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.error
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                let ac = UIAlertController(title: "Error \($0)", message: nil, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self?.present(ac, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.inputs.fetchTrigger.onNext(())
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
