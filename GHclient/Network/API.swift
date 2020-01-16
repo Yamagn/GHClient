@@ -89,7 +89,7 @@ public struct GetContents: GitHubRequest {
         return DecodableDataParser()
     }
     
-    public typealias Response = [Contents]
+    public typealias Response = [Content]
     public var method: HTTPMethod {
         return .get
     }
@@ -104,7 +104,7 @@ public struct GetContents: GitHubRequest {
         guard let data = object as? Data else {
             throw ResponseError.unexpectedObject(object)
         }
-        return try JSONDecoder().decode([Contents].self, from: data)
+        return try JSONDecoder().decode([Content].self, from: data)
     }
 }
 
