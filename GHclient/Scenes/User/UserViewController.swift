@@ -42,10 +42,6 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if self.viewModel == nil {
-            self.viewModel = UserViewModel(username: "Yamagn")
-        }
-        
         viewModel?.outputs.userInfo
             .observeOn(MainScheduler.instance)
             .subscribe{ info in
@@ -56,8 +52,16 @@ class UserViewController: UIViewController {
         
         viewModel?.outputs.userRepos
             .observeOn(MainScheduler.instance)
-            .bind(to: tableView.rx.items) { tableView, row, repository in
+            .bind(to: tableView.rx.items) { tableView, _, repository in
+                print(repository)
                 let cell: RepoCell = tableView.dequeueReusableCell(withIdentifier: "RepoCell") as! RepoCell
+                if repository.isPrivate {
+                    let path = Bundle.main.path(forResource: "private", ofType: "png")
+                    cell.repoTypeImage.image = UIImage(contentsOfFile: path!)
+                } else {
+                    let path = Bundle.main.path(forResource: "public", ofType: "png")
+                    cell.repoTypeImage.image = UIImage(contentsOfFile: path!)
+                }
                 cell.repoName.text = repository.name
                 cell.repoDesc.text = repository.description
                 return cell
@@ -67,14 +71,8 @@ class UserViewController: UIViewController {
         tableView.rx.modelSelected(Repository.self)
             .observeOn(MainScheduler.instance)
             .subscribe { [weak self] in
-                // 詳細画面への遷移
-            }
-            .disposed(by: disposeBag)
-        
-        viewModel?.outputs.isLoading
-            .observeOn(MainScheduler.instance)
-            .subscribe { [weak self] in
-                self?.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: $0.element ?? false ? 50 : 0, right: 0)
+                let detailVC = RepoDetailViewController.make(with: RepoDetailViewModel(repository: $0))
+                self?.navigationController?.pushViewController(detailVC, animated: true)
             }
             .disposed(by: disposeBag)
         viewModel?.outputs.error
