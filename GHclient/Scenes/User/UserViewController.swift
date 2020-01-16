@@ -42,6 +42,10 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if self.viewModel == nil {
+            self.viewModel = UserViewModel(username: "Yamagn")
+        }
+        
         viewModel?.outputs.userInfo
             .observeOn(MainScheduler.instance)
             .subscribe{ info in
@@ -53,7 +57,6 @@ class UserViewController: UIViewController {
         viewModel?.outputs.userRepos
             .observeOn(MainScheduler.instance)
             .bind(to: tableView.rx.items) { tableView, _, repository in
-                print(repository)
                 let cell: RepoCell = tableView.dequeueReusableCell(withIdentifier: "RepoCell") as! RepoCell
                 if repository.isPrivate {
                     let path = Bundle.main.path(forResource: "private", ofType: "png")
@@ -70,10 +73,10 @@ class UserViewController: UIViewController {
         
         tableView.rx.modelSelected(Repository.self)
             .observeOn(MainScheduler.instance)
-            .subscribe { [weak self] in
+            .subscribe (onNext: { [weak self] in
                 let detailVC = RepoDetailViewController.make(with: RepoDetailViewModel(repository: $0))
                 self?.navigationController?.pushViewController(detailVC, animated: true)
-            }
+            })
             .disposed(by: disposeBag)
         viewModel?.outputs.error
             .observeOn(MainScheduler.instance)

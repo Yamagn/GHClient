@@ -96,7 +96,7 @@ final class UserViewModel: UserViewModelType, UserViewModelInputs, UserViewModel
         .withLatestFrom(isLoading)
             .filter{ !$0 }
             .withLatestFrom(page)
-            .filter{ $0 > 5}
+            .filter{ $0 < 5}
             .bind(to: getUserReposAction.inputs)
             .disposed(by: disposeBag)
     }

@@ -38,7 +38,7 @@ public struct SearchUsers: GitHubRequest {
         return .get
     }
     public var path: String {
-        return "/search/users"
+        return "search/users"
     }
     
     public var parameters: Any? {
@@ -70,7 +70,7 @@ public struct GetUserRepositories: GitHubRequest {
     }
     
     public var parameters: Any? {
-        return ["page": page]
+        return ["page": page, "sort": "updated"]
     }
     
     let username: String
@@ -89,12 +89,12 @@ public struct GetContents: GitHubRequest {
         return DecodableDataParser()
     }
     
-    public typealias Response = [Contents]
+    public typealias Response = [Content]
     public var method: HTTPMethod {
         return .get
     }
     public var path: String {
-        return "/repos/\(username)/\(reponame)/contents"
+        return "repos/\(username)/\(reponame)/contents"
     }
     
     let username: String
@@ -104,7 +104,7 @@ public struct GetContents: GitHubRequest {
         guard let data = object as? Data else {
             throw ResponseError.unexpectedObject(object)
         }
-        return try JSONDecoder().decode([Contents].self, from: data)
+        return try JSONDecoder().decode([Content].self, from: data)
     }
 }
 
@@ -118,7 +118,7 @@ public struct GetUser: GitHubRequest {
         return .get
     }
     public var path: String {
-        return "/user"
+        return "user"
     }
     
     public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
