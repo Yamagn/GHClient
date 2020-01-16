@@ -38,7 +38,7 @@ public struct SearchUsers: GitHubRequest {
         return .get
     }
     public var path: String {
-        return "/search/users"
+        return "search/users"
     }
     
     public var parameters: Any? {
@@ -94,7 +94,7 @@ public struct GetContents: GitHubRequest {
         return .get
     }
     public var path: String {
-        return "/repos/\(username)/\(reponame)/contents"
+        return "repos/\(username)/\(reponame)/contents"
     }
     
     let username: String
@@ -118,7 +118,7 @@ public struct GetUser: GitHubRequest {
         return .get
     }
     public var path: String {
-        return "/user"
+        return "user"
     }
     
     public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
