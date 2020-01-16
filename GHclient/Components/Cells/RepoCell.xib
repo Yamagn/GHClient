@@ -17,34 +17,36 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fly-sT-eeH">
-                        <rect key="frame" x="20" y="11" width="45" height="45"/>
+                        <rect key="frame" x="20" y="11" width="48" height="45"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="fly-sT-eeH" secondAttribute="height" multiplier="1:1" id="QIm-Xv-Tlu"/>
+                            <constraint firstAttribute="width" constant="48" id="RnI-RP-qa1"/>
+                            <constraint firstAttribute="height" constant="45" id="ZPj-vL-L32"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcB-W1-3On">
-                        <rect key="frame" x="80" y="11" width="223" height="21"/>
+                        <rect key="frame" x="76" y="11" width="227" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYc-x2-XxT">
-                        <rect key="frame" x="80" y="45" width="223" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYc-x2-XxT">
+                        <rect key="frame" x="76" y="45" width="227" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="TYc-x2-XxT" firstAttribute="leading" secondItem="fly-sT-eeH" secondAttribute="trailing" constant="15" id="A7t-EA-MbC"/>
+                    <constraint firstItem="TYc-x2-XxT" firstAttribute="leading" secondItem="fly-sT-eeH" secondAttribute="trailing" constant="8" id="A7t-EA-MbC"/>
                     <constraint firstAttribute="bottom" secondItem="fly-sT-eeH" secondAttribute="bottom" constant="11" id="AzF-yA-O9O"/>
                     <constraint firstAttribute="trailing" secondItem="BcB-W1-3On" secondAttribute="trailing" constant="20" id="CJB-eO-96Y"/>
                     <constraint firstAttribute="bottom" secondItem="TYc-x2-XxT" secondAttribute="bottom" constant="6" id="DBR-Wl-uQb"/>
+                    <constraint firstItem="TYc-x2-XxT" firstAttribute="top" secondItem="BcB-W1-3On" secondAttribute="bottom" constant="13" id="QqL-bl-eBM"/>
                     <constraint firstItem="fly-sT-eeH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="TNZ-5z-ym6"/>
                     <constraint firstItem="BcB-W1-3On" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="WcL-gc-equ"/>
                     <constraint firstAttribute="trailing" secondItem="TYc-x2-XxT" secondAttribute="trailing" constant="20" id="a1s-qe-mIe"/>
                     <constraint firstItem="fly-sT-eeH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="hAJ-dM-CjI"/>
-                    <constraint firstItem="BcB-W1-3On" firstAttribute="leading" secondItem="fly-sT-eeH" secondAttribute="trailing" constant="15" id="p8X-FG-ukE"/>
+                    <constraint firstItem="BcB-W1-3On" firstAttribute="leading" secondItem="fly-sT-eeH" secondAttribute="trailing" constant="8" id="p8X-FG-ukE"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
