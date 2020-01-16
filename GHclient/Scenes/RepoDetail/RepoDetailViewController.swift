@@ -23,8 +23,21 @@ class RepoDetailViewController: UIViewController {
     private var viewModel: RepoDetailViewModelType!
     private var disposeBag = DisposeBag()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let repoNib = UINib(nibName: "ContentCell", bundle: nil)
+        tableView.register(repoNib, forCellReuseIdentifier: "ContentCell")
+        
+        tableView.indexPathsForSelectedRows?.forEach { [weak self] in
+            self?.tableView.deselectRow(at: $0, animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.repoDesc.text = viewModel.outputs.repository.description
 
         viewModel.outputs.navigationBarTitle
             .observeOn(MainScheduler.instance)

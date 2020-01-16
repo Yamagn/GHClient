@@ -62,7 +62,6 @@ final class RepoDetailViewModel: RepoDetailViewModelType, RepoDetailViewModelInp
         }
         
         getContentsAction.elements
-            .withLatestFrom(contents)
             .bind(to: contents)
             .disposed(by: disposeBag)
         
