@@ -1,4 +1,4 @@
-name: GHClient
+name: GHclient
 configs:
   Debug: debug
   Release: release
@@ -7,25 +7,25 @@ options:
 attributes:
   ORGANIZATIONNAME: ymgn
 fileGroups:
-  - GHClient
+  - GHclient
 settingGroups:
   app:
     DEVELOPMENT_TEAM: 7F6B255837
 targets:
-  GHClient:
+  GHclient:
     type: application
     platform: iOS
     sources:
-      - path: GHClient
+      - path: GHclient
     attributes:
       SystemCapabilities:
         com.apple.BackgroundModes:
           enabled: 1
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: ymgn.GHClient
+        PRODUCT_BUNDLE_IDENTIFIER: ymgn.GHclient
         ASSETCATALOG_COMPIER_APPICON_NAME: AppIcon
-        INFOPLIST_FILE: GHClient/Info.plist
+        INFOPLIST_FILE: GHclient/Info.plist
       configs:
         Debug:
           GCC_OPTIMIZATION_LEVEL: O
@@ -37,22 +37,24 @@ targets:
       - carthage: RxSwift
       - carthage: Action
       - carthage: Kingfisher
-  GHClientTests:
+      - carthage: RxCocoa
+      - carthage: RxRelay
+  GHclientTests:
     type: bundle.unit-test
     platform: iOS
     dependencies:
-      - target: GHClient
+      - target: GHclient
     settings:
-      TEST_HOSTS: $(BUILT_PRODUCTS_DIR)/GHClient.app/GHClient
-      INFORPLSIT_FILE: GHClientTests/Info.plist
+      TEST_HOSTS: $(BUILT_PRODUCTS_DIR)/GHclient.app/GHclient
+      INFORPLSIT_FILE: GHclientTests/Info.plist
     sources:
-      - GHClientTests
+      - GHclientTests
 
 schemes:
-  GHClient:
+  GHclient:
     build:
       targets:
-        GHClient: all
+        GHclient: all
     run:
       config: Debug
     profile:
@@ -61,4 +63,3 @@ schemes:
       config: Debug
     archive:
       config: Release
-
