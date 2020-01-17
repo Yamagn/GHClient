@@ -27,6 +27,7 @@ public struct UserItem: Codable {
     let reposUrl: String
     let name: String?
     let type: String
+    let bio: String?
     
     enum CodingKeys: String, CodingKey {
         case login
@@ -35,6 +36,7 @@ public struct UserItem: Codable {
         case reposUrl = "repos_url"
         case name
         case type
+        case bio
     }
 }
 
