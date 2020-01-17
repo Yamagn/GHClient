@@ -10,16 +10,39 @@
         <!--Search-->
         <scene sceneID="d4d-5Z-Taf">
             <objects>
-                <viewController storyboardIdentifier="Search" title="Search" id="gDS-Dn-r1J" customClass="SearchViewController" customModule="GHClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Search" title="Search" id="gDS-Dn-r1J" customClass="SearchViewController" customModule="GHclient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7jF-Ka-bFK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="RRL-OZ-f78">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EXW-7T-y8G">
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="RRL-OZ-f78" firstAttribute="trailing" secondItem="cyI-Zq-srP" secondAttribute="trailing" id="1nw-KL-haX"/>
+                            <constraint firstItem="RRL-OZ-f78" firstAttribute="top" secondItem="cyI-Zq-srP" secondAttribute="top" id="7cJ-Ko-2uk"/>
+                            <constraint firstItem="EXW-7T-y8G" firstAttribute="leading" secondItem="cyI-Zq-srP" secondAttribute="leading" id="8rp-8h-Bda"/>
+                            <constraint firstItem="EXW-7T-y8G" firstAttribute="trailing" secondItem="cyI-Zq-srP" secondAttribute="trailing" id="RRc-I7-mrf"/>
+                            <constraint firstItem="EXW-7T-y8G" firstAttribute="top" secondItem="RRL-OZ-f78" secondAttribute="bottom" symbolic="YES" id="ULL-pD-NEq"/>
+                            <constraint firstItem="EXW-7T-y8G" firstAttribute="bottom" secondItem="cyI-Zq-srP" secondAttribute="bottom" id="ioc-in-nNt"/>
+                            <constraint firstItem="RRL-OZ-f78" firstAttribute="leading" secondItem="cyI-Zq-srP" secondAttribute="leading" id="yGZ-FU-ygp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cyI-Zq-srP"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="Utq-fk-mqE"/>
                     <navigationItem key="navigationItem" id="xTO-AM-bzA"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="RRL-OZ-f78" id="LpZ-bC-mI7"/>
+                        <outlet property="tableView" destination="EXW-7T-y8G" id="Tiq-2R-l06"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tr7-eC-8xS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
