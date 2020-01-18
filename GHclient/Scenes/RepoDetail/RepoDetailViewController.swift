@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import KRProgressHUD
 
 class RepoDetailViewController: UIViewController {
     static func make(with viewModel: RepoDetailViewModel) -> RepoDetailViewController {
@@ -58,6 +59,16 @@ class RepoDetailViewController: UIViewController {
                 cell.contentName.text = content.name
                 return cell
             }
+            .disposed(by: disposeBag)
+        
+        viewModel?.outputs.isLoading
+            .subscribe(onNext: {
+                if $0 {
+                    KRProgressHUD.show()
+                } else {
+                    KRProgressHUD.dismiss()
+                }
+            })
             .disposed(by: disposeBag)
         
         viewModel.outputs.error

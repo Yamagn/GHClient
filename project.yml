@@ -32,7 +32,7 @@ targets:
         Release:
           GCC_OPTIMIZATION_LEVEL: s
     dependencies:
-      - carthage: SVProgressHUD
+      - carthage: KRProgressHUD
       - carthage: APIKit
       - carthage: RxSwift
       - carthage: Action
