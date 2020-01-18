@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Kingfisher
+import KRProgressHUD
 
 class UserViewController: UIViewController {
     
@@ -52,7 +53,8 @@ class UserViewController: UIViewController {
                 self.fullName.text = info.element?.name
                 self.userName.text = info.element?.login
                 self.avaterImage.kf.setImage(with: .network(URL(string: info.element!.avatarUrl)!))
-        }
+            }
+        .disposed(by: disposeBag)
         
         viewModel?.outputs.userRepos
             .observeOn(MainScheduler.instance)
@@ -78,6 +80,17 @@ class UserViewController: UIViewController {
                 self?.navigationController?.pushViewController(detailVC, animated: true)
             })
             .disposed(by: disposeBag)
+        
+        viewModel?.outputs.isLoading 
+            .subscribe(onNext: {
+                if $0 {
+                    KRProgressHUD.show()
+                } else {
+                    KRProgressHUD.dismiss()
+                }
+            })
+            .disposed(by: disposeBag)
+        
         viewModel?.outputs.error
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
