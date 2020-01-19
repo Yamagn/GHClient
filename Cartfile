@@ -3,3 +3,4 @@ github "ishkawa/APIKit" ~> 5.0
 github "ReactiveX/RxSwift"
 github "RxSwiftCommunity/Action"
 github "onevcat/Kingfisher"
+github "OAuthSwift/OAuthSwift" ~> 2.0.0

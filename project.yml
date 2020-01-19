@@ -33,12 +33,14 @@ targets:
           GCC_OPTIMIZATION_LEVEL: s
     dependencies:
       - carthage: KRProgressHUD
+      - carthage: KRActivityIndicatorView
       - carthage: APIKit
       - carthage: RxSwift
       - carthage: Action
       - carthage: Kingfisher
       - carthage: RxCocoa
       - carthage: RxRelay
+      - carthage: OAuthSwift
   GHclientTests:
     type: bundle.unit-test
     platform: iOS

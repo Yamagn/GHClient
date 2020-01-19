@@ -49,10 +49,16 @@ final class UserViewModel: UserViewModelType, UserViewModelInputs, UserViewModel
     
     init(username: String) {
         self.getUserAction = Action {
-                return Session.rx_send(request: GetUserDetail(username: username))
+            if username == "" {
+                return Session.rx_send(request: GetYou())
+            }
+            return Session.rx_send(request: GetUserDetail(username: username))
         }
         
         self.getUserReposAction = Action { page in
+            if username == "" {
+                return Session.rx_send(request: GetYourRepository(page: page))
+            }
             return Session.rx_send(request: GetUserRepositories(username: username, page: page))
         }
         let user = PublishRelay<UserItem>()

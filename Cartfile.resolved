@@ -1,4 +1,5 @@
 github "Krimpedance/KRProgressHUD" "3.4.4"
+github "OAuthSwift/OAuthSwift" "2.1.0"
 github "ReactiveX/RxSwift" "5.0.1"
 github "RxSwiftCommunity/Action" "4.0.1"
 github "ishkawa/APIKit" "5.1.0"
