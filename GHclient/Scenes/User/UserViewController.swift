@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 import KRProgressHUD
+import OAuthSwift
 
 class UserViewController: UIViewController {
     
@@ -28,6 +29,7 @@ class UserViewController: UIViewController {
     
     private var viewModel: UserViewModelType?
     private let disposeBag = DisposeBag()
+    var oauthswift: OAuth2Swift?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,11 +44,11 @@ class UserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if self.viewModel == nil {
-            self.viewModel = UserViewModel(username: "Yamagn")
+            self.viewModel = UserViewModel(username: "")
         }
-        
+
         viewModel?.outputs.userInfo
             .observeOn(MainScheduler.instance)
             .subscribe{ info in
@@ -55,7 +57,7 @@ class UserViewController: UIViewController {
                 self.avaterImage.kf.setImage(with: .network(URL(string: info.element!.avatarUrl)!))
             }
         .disposed(by: disposeBag)
-        
+
         viewModel?.outputs.userRepos
             .observeOn(MainScheduler.instance)
             .bind(to: tableView.rx.items) { tableView, _, repository in
@@ -72,7 +74,7 @@ class UserViewController: UIViewController {
                 return cell
             }
             .disposed(by: disposeBag)
-        
+
         tableView.rx.modelSelected(Repository.self)
             .observeOn(MainScheduler.instance)
             .subscribe (onNext: { [weak self] in
@@ -80,8 +82,8 @@ class UserViewController: UIViewController {
                 self?.navigationController?.pushViewController(detailVC, animated: true)
             })
             .disposed(by: disposeBag)
-        
-        viewModel?.outputs.isLoading 
+
+        viewModel?.outputs.isLoading
             .subscribe(onNext: {
                 if $0 {
                     KRProgressHUD.show()
@@ -90,7 +92,7 @@ class UserViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
-        
+
         viewModel?.outputs.error
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
@@ -99,11 +101,29 @@ class UserViewController: UIViewController {
                 self?.present(ac, animated: true)
             })
             .disposed(by: disposeBag)
-        
+
         tableView.rx.reachedBottom.asObservable()
             .bind(to: (viewModel?.inputs.reachedBottomTriger)!)
             .disposed(by: disposeBag)
         
-        viewModel?.inputs.fetchTriger.onNext(())
+        if UserDefaults.standard.string(forKey: "ACCESS_TOKEN") == nil {
+            let oauthSwift = OAuth2Swift(consumerKey: GH_CLIENT_ID, consumerSecret: GH_CLIENT_SECRET, authorizeUrl: "https://github.com/login/oauth/authorize", accessTokenUrl: "https://github.com/login/oauth/access_token", responseType: "code")
+            oauthSwift.authorize(withCallbackURL: URL(string: "GHclient://oauth-callback"), scope: "", state: "GHclient") { results in
+                switch results {
+                case .success(let (credential, _, _)):
+                    print("access_token", credential.oauthToken)
+                    UserDefaults.standard.set(credential.oauthToken, forKey: "ACCESS_TOKEN")
+                    self.viewModel?.inputs.fetchTriger.onNext(())
+                case .failure(let error):
+                    print(error)
+                    let ac = UIAlertController(title: "認証に失敗しました", message: error.description, preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(ac, animated: true)
+                }
+                self.oauthswift = oauthSwift
+            }
+        } else {
+            viewModel?.inputs.fetchTriger.onNext(())
+        }
     }
 }
